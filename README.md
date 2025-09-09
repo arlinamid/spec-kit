@@ -8,7 +8,12 @@
     <strong>An effort to allow organizations to focus on product scenarios rather than writing undifferentiated code with the help of Spec-Driven Development.</strong>
 </p>
 
-[![Release](https://github.com/github/spec-kit/actions/workflows/release.yml/badge.svg)](https://github.com/github/spec-kit/actions/workflows/release.yml)
+[![Release](https://github.com/arlinamid/spec-kit/actions/workflows/release.yml/badge.svg)](https://github.com/arlinamid/spec-kit/actions/workflows/release.yml)
+
+<div align="center">
+    <h4>🚀 <strong>Enhanced with Windows PowerShell Support!</strong></h4>
+    <p><em>This fork includes native Windows PowerShell scripts for seamless cross-platform development</em></p>
+</div>
 
 ---
 
@@ -39,7 +44,7 @@ Spec-Driven Development **flips the script** on traditional software development
 Initialize your project depending on the coding agent you're using:
 
 ```bash
-uvx --from git+https://github.com/github/spec-kit.git specify init <PROJECT_NAME>
+uvx --from git+https://github.com/arlinamid/spec-kit.git specify init <PROJECT_NAME>
 ```
 
 ### 2. Create the spec
@@ -115,6 +120,63 @@ Our research and experimentation focus on:
 - [Python 3.11+](https://www.python.org/downloads/)
 - [Git](https://git-scm.com/downloads)
 - **Windows**: PowerShell 5.1+ (usually pre-installed)
+
+## 🪟 Windows PowerShell Support
+
+This fork includes **enhanced Windows support** with native PowerShell scripts:
+
+### ✨ What's New
+- **Native PowerShell Scripts**: All core functionality now works natively on Windows
+- **Automatic Platform Detection**: AI agents automatically choose the right scripts (PowerShell on Windows, Bash on Linux/macOS)
+- **Cross-Platform Compatibility**: Seamless experience across all operating systems
+- **No WSL Required**: Run directly on Windows without Windows Subsystem for Linux
+
+### 🛠️ Enhanced Scripts
+- **`create-new-feature.ps1`** - Creates feature branches and specifications
+- **`setup-plan.ps1`** - Sets up implementation plan structure
+- **`check-task-prerequisites.ps1`** - Checks for required files and documents
+- **`update-agent-context.ps1`** - Updates agent context files
+
+### 🚀 Getting Started on Windows
+```powershell
+# Install and initialize a new project
+uvx --from git+https://github.com/arlinamid/spec-kit.git specify init my-project --ai gemini
+
+# Navigate to your project
+cd my-project
+
+# Start using Gemini CLI with PowerShell scripts
+gemini /specify "Build a task management app"
+gemini /plan "Use React with TypeScript and Node.js backend"
+gemini /tasks "Generate implementation tasks"
+```
+
+### 🔧 Technical Improvements
+- **Fixed Join-Path Issues**: Resolved PowerShell path handling problems
+- **Added Null Validation**: Proper error handling for missing git repositories
+- **Enhanced Error Messages**: Clear feedback for troubleshooting
+- **Common Functions**: Shared utilities for consistent behavior across scripts
+
+## 🔄 Differences from Original Repository
+
+This fork (`arlinamid/spec-kit`) includes several enhancements over the original `github/spec-kit`:
+
+### 🆕 New Features
+- **Windows PowerShell Support**: Native PowerShell scripts for Windows users
+- **Cross-Platform Script Detection**: Automatic selection of appropriate scripts based on OS
+- **Enhanced Error Handling**: Better error messages and validation
+- **Improved Path Handling**: Fixed PowerShell-specific path issues
+
+### 🛠️ Technical Improvements
+- **Fixed Join-Path Issues**: Resolved PowerShell path concatenation problems
+- **Added Null Validation**: Proper handling of missing git repositories
+- **Common Functions**: Shared utilities for consistent script behavior
+- **Updated Command Templates**: AI agents now use platform-specific commands
+
+### 📦 Release Packages
+- **Template Packages**: Includes PowerShell scripts in all release packages
+- **Automated Releases**: GitHub Actions workflow for consistent releases
+- **Version Control**: Proper versioning with semantic versioning
 
 ## 📖 Learn more
 
