@@ -225,4 +225,4 @@ jobs:
         fi
         
     # Note: No longer committing version changes back to main branch
-    # The version is only updated in the release artifacts
+    # The version is only updated in the release artifacts# Trigger workflow
