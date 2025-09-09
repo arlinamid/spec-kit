@@ -23,6 +23,7 @@ Or install globally:
 """
 
 import os
+import platform
 import subprocess
 import sys
 import zipfile
@@ -329,6 +330,17 @@ def run_command(cmd: list[str], check_return: bool = True, capture: bool = False
             raise
         return None
 
+
+def is_windows() -> bool:
+    """Check if running on Windows."""
+    return platform.system() == "Windows"
+
+def get_script_command(script_name: str, args: str = "") -> str:
+    """Get the appropriate command to run a script based on the operating system."""
+    if is_windows():
+        return f'powershell -ExecutionPolicy Bypass -File scripts/{script_name}.ps1 {args}'
+    else:
+        return f'bash scripts/{script_name}.sh {args}'
 
 def check_tool(tool: str, install_hint: str) -> bool:
     """Check if a tool is installed."""
@@ -840,8 +852,15 @@ def check():
     show_banner()
     console.print("[bold]Checking Specify requirements...[/bold]\n")
     
+    # Show platform information
+    console.print(f"[cyan]Platform:[/cyan] {platform.system()} {platform.release()}")
+    if is_windows():
+        console.print("[green]✓[/green] Windows detected - PowerShell scripts will be used")
+    else:
+        console.print("[green]✓[/green] Unix-like system detected - Bash scripts will be used")
+    
     # Check if we have internet connectivity by trying to reach GitHub API
-    console.print("[cyan]Checking internet connectivity...[/cyan]")
+    console.print("\n[cyan]Checking internet connectivity...[/cyan]")
     try:
         response = httpx.get("https://api.github.com", timeout=5, follow_redirects=True)
         console.print("[green]✓[/green] Internet connection available")
@@ -849,8 +868,14 @@ def check():
         console.print("[red]✗[/red] No internet connection - required for downloading templates")
         console.print("[yellow]Please check your internet connection[/yellow]")
     
-    console.print("\n[cyan]Optional tools:[/cyan]")
+    console.print("\n[cyan]Required tools:[/cyan]")
     git_ok = check_tool("git", "https://git-scm.com/downloads")
+    
+    # Check PowerShell on Windows
+    if is_windows():
+        powershell_ok = check_tool("powershell", "PowerShell is usually pre-installed on Windows")
+        if not powershell_ok:
+            console.print("[red]✗[/red] PowerShell not found - required for Windows script execution")
     
     console.print("\n[cyan]Optional AI tools:[/cyan]")
     claude_ok = check_tool("claude", "Install from: https://docs.anthropic.com/en/docs/claude-code/setup")
@@ -861,6 +886,12 @@ def check():
         console.print("[yellow]Consider installing git for repository management[/yellow]")
     if not (claude_ok or gemini_ok):
         console.print("[yellow]Consider installing an AI assistant for the best experience[/yellow]")
+    
+    # Show script examples
+    console.print(f"\n[cyan]Script execution examples:[/cyan]")
+    console.print(f"  Create feature: [dim]{get_script_command('create-new-feature', '--json \"feature description\"')}[/dim]")
+    console.print(f"  Setup plan: [dim]{get_script_command('setup-plan', '--json')}[/dim]")
+    console.print(f"  Check prerequisites: [dim]{get_script_command('check-task-prerequisites', '--json')}[/dim]")
 
 
 def main():
