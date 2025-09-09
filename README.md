@@ -116,8 +116,6 @@ Our research and experimentation focus on:
 - [Git](https://git-scm.com/downloads)
 - **Windows**: PowerShell 5.1+ (usually pre-installed)
 
-> **Note**: This fork includes PowerShell scripts for native Windows support.
-
 ## 📖 Learn more
 
 - **[Complete Spec-Driven Development Methodology](./spec-driven.md)** - Deep dive into the full process
