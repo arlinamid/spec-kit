@@ -72,7 +72,7 @@ jobs:
         
         if [ -d "scripts" ]; then
           cp -r scripts sdd-package-base/
-          echo "Copied scripts folder"
+          echo "Copied scripts folder (including PowerShell scripts)"
         fi
 
         if [ -d "templates" ]; then
@@ -185,6 +185,8 @@ jobs:
         
         Updated specification-driven development templates for GitHub Copilot, Claude Code, and Gemini CLI.
         
+        **Windows PowerShell Support**: This release includes PowerShell scripts for native Windows compatibility.
+        
         Download the template for your preferred AI assistant:
         - spec-kit-template-copilot-${{ steps.get_tag.outputs.new_version }}.zip
         - spec-kit-template-claude-${{ steps.get_tag.outputs.new_version }}.zip
@@ -205,7 +207,7 @@ jobs:
           spec-kit-template-copilot-${{ steps.get_tag.outputs.new_version }}.zip \
           spec-kit-template-claude-${{ steps.get_tag.outputs.new_version }}.zip \
           spec-kit-template-gemini-${{ steps.get_tag.outputs.new_version }}.zip \
-          --title "Spec Kit Templates - $VERSION_NO_V" \
+          --title "Spec Kit Templates - $VERSION_NO_V (Windows PowerShell Support)" \
           --notes-file release_notes.md
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
