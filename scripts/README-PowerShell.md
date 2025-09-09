@@ -2,6 +2,8 @@
 
 This directory contains PowerShell equivalents of the original bash scripts, designed to work on Windows without requiring WSL (Windows Subsystem for Linux).
 
+> **Updated**: This fork includes native Windows PowerShell support for all spec-kit operations.
+
 ## Prerequisites
 
 - Windows PowerShell 5.1 or PowerShell Core 6.0+
