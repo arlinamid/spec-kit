@@ -117,3 +117,4 @@ If you're migrating from the bash scripts:
 - **PowerShell Core**: Full support on Linux/macOS
 - **Git Bash**: Not tested, but should work with PowerShell Core
 - **WSL**: Not required, but scripts will work in WSL if PowerShell is available
+# Trigger workflow
