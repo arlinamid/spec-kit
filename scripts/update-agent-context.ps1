@@ -6,9 +6,18 @@ param(
     [string]$AgentType = ""
 )
 
-$repoRoot = git rev-parse --show-toplevel
-$currentBranch = git rev-parse --abbrev-ref HEAD
-$featureDir = Join-Path $repoRoot "specs" $currentBranch
+# Source common functions
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+. (Join-Path $scriptDir "common.ps1")
+
+$repoRoot = Get-RepoRoot
+if ([string]::IsNullOrWhiteSpace($repoRoot)) {
+    Write-Error "ERROR: Not in a git repository"
+    exit 1
+}
+
+$currentBranch = Get-CurrentBranch
+$featureDir = Get-FeatureDir $repoRoot $currentBranch
 $newPlan = Join-Path $featureDir "plan.md"
 
 # Determine which agent context files to update

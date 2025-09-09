@@ -9,6 +9,10 @@ param(
     [string[]]$FeatureDescription
 )
 
+# Source common functions
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+. (Join-Path $scriptDir "common.ps1")
+
 if ($Help) {
     Write-Host "Usage: .\create-new-feature.ps1 [-Json] <feature_description>"
     exit 0
@@ -21,7 +25,12 @@ if ([string]::IsNullOrWhiteSpace($description)) {
 }
 
 # Get repository root
-$repoRoot = git rev-parse --show-toplevel
+$repoRoot = Get-RepoRoot
+if ([string]::IsNullOrWhiteSpace($repoRoot)) {
+    Write-Error "ERROR: Not in a git repository"
+    exit 1
+}
+
 $specsDir = Join-Path $repoRoot "specs"
 
 # Create specs directory if it doesn't exist
@@ -70,7 +79,7 @@ $featureDir = Join-Path $specsDir $branchName
 New-Item -ItemType Directory -Path $featureDir -Force | Out-Null
 
 # Copy template if it exists
-$template = Join-Path $repoRoot "templates" "spec-template.md"
+$template = Join-Path (Join-Path $repoRoot "templates") "spec-template.md"
 $specFile = Join-Path $featureDir "spec.md"
 
 if (Test-Path $template -PathType Leaf) {

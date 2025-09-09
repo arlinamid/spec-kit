@@ -19,6 +19,12 @@ $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 # Get all paths
 $paths = Get-FeaturePaths
 
+# Validate paths
+if ([string]::IsNullOrWhiteSpace($paths.REPO_ROOT)) {
+    Write-Error "ERROR: Not in a git repository"
+    exit 1
+}
+
 # Check if on feature branch
 if (-not (Test-FeatureBranch $paths.CURRENT_BRANCH)) {
     exit 1
@@ -30,7 +36,7 @@ if (-not (Test-Path $paths.FEATURE_DIR -PathType Container)) {
 }
 
 # Copy plan template if it exists
-$template = Join-Path $paths.REPO_ROOT "templates" "plan-template.md"
+$template = Join-Path (Join-Path $paths.REPO_ROOT "templates") "plan-template.md"
 if (Test-Path $template -PathType Leaf) {
     Copy-Item $template $paths.IMPL_PLAN
 }
