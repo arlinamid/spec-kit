@@ -1,0 +1,2 @@
+id,title,affected,cvss_vector_v4,score,status,owner,evidence,created_at,due_date,notes
+VA-001,Example vuln in input validation,api-gateway,AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H,9.8,Open,alice,link-to-ci-artifact,2025-09-20,2025-10-05,High priority

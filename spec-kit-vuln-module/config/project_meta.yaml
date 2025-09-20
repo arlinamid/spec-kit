@@ -1,0 +1,31 @@
+# minimal project metadata used by the generator
+name: Example Project
+owner: Your Org
+repo_url: https://github.com/your/repo
+description: >
+  Short description of the system. Components, main tech stack, data sensitivity, users.
+llm_used: true  # if the project uses LLMs/AI agents/tools
+data_categories:
+  - Public
+  - Internal
+  - Confidential
+  - PII
+environments:
+  - dev
+  - staging
+  - prod
+languages:
+  - python
+  - bash
+  - markdown
+dependencies_manifest:
+  - requirements.txt
+  - pyproject.toml
+  - package.json
+threat_model_components:
+  - API Gateway
+  - Backend Service
+  - Database
+  - Object Storage
+  - CI/CD
+  - LLM/Agent Runtime

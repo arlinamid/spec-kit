@@ -1,0 +1,55 @@
+name: Security
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+permissions:
+  contents: read
+  security-events: write
+jobs:
+  codeql:
+    name: CodeQL
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'python' ]  # extend as needed
+    steps:
+      - uses: actions/checkout@v4
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+      - uses: github/codeql-action/autobuild@v3
+      - uses: github/codeql-action/analyze@v3
+        with:
+          category: '/language:${{matrix.language}}'
+
+  scanners:
+    name: Semgrep/Bandit/pip-audit/Gitleaks/Trivy/Syft
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install tools
+        run: |
+          pipx install bandit pip-audit
+          curl -s https://raw.githubusercontent.com/gitleaks/gitleaks/master/install.sh | bash
+          curl -sL https://github.com/anchore/syft/releases/latest/download/syft_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m).tar.gz | tar -xz && sudo mv syft /usr/local/bin/
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+          curl -sL https://github.com/returntocorp/semgrep/releases/latest/download/semgrep-linux-amd64 -o /usr/local/bin/semgrep && chmod +x /usr/local/bin/semgrep
+      - name: Run scans
+        run: |
+          mkdir -p artifacts
+          scripts/vuln_audit/run_all_scans.sh || true
+      - name: Upload SARIF to GitHub
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: artifacts
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-artifacts
+          path: artifacts

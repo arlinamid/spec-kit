@@ -1,0 +1,28 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-yaml
+      - id: mixed-line-ending
+
+  # Bandit (Python SAST)
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.9
+    hooks:
+      - id: bandit
+        args: ["-r", "."]
+
+  # Detect secrets (alternative to gitleaks on dev machines)
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+
+  # Semgrep lightweight (optional)
+  - repo: https://github.com/returntocorp/semgrep
+    rev: v1.83.0
+    hooks:
+      - id: semgrep
+        args: ["--config=auto"]
