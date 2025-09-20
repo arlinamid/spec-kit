@@ -164,7 +164,7 @@ cat artifacts/security_summary.md
 ```
 
 ### Language-Specific Scanning
-```bash
+   ```bash
 # Python security
 bandit -r . -f sarif -o artifacts/bandit.sarif
 pip-audit -r requirements.txt -f json -o artifacts/pip-audit.json
@@ -253,7 +253,7 @@ config = detector.generate_scan_config()
 ```
 
 ### Custom Security Tools
-```bash
+   ```bash
 # Add custom tools to scanning
 echo "custom-tool" >> scripts/vuln_audit/run_multi_language_scans.sh
 ```
