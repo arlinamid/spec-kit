@@ -92,7 +92,9 @@
 specs/[###-feature]/
 ├── plan.md              # This file (/plan command output)
 ├── research.md          # Phase 0 output (/plan command)
+├── security-research.md # Phase 0 output (/plan command)
 ├── data-model.md        # Phase 1 output (/plan command)
+├── security-architecture.md # Phase 1 output (/plan command)
 ├── quickstart.md        # Phase 1 output (/plan command)
 ├── contracts/           # Phase 1 output (/plan command)
 └── tasks.md             # Phase 2 output (/tasks command - NOT created by /plan)
@@ -151,15 +153,15 @@ ios/ or android/
      Task: "Find best practices for {tech} in {domain}"
    ```
 
-3. **Consolidate findings** in `research.md` using format:
+3. **Consolidate findings** in `research.md` and `security-research.md` using format:
    - Decision: [what was chosen]
    - Rationale: [why chosen]
    - Alternatives considered: [what else evaluated]
 
-**Output**: research.md with all NEEDS CLARIFICATION resolved
+**Output**: research.md and security-research.md with all NEEDS CLARIFICATION resolved
 
 ## Phase 1: Design & Contracts
-*Prerequisites: research.md complete*
+*Prerequisites: research.md and security-research.md complete*
 
 1. **Extract entities from feature spec** → `data-model.md`:
    - Entity name, fields, relationships
