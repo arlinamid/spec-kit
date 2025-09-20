@@ -11,8 +11,8 @@
 [![Release](https://github.com/arlinamid/spec-kit/actions/workflows/release.yml/badge.svg)](https://github.com/arlinamid/spec-kit/actions/workflows/release.yml)
 
 <div align="center">
-    <h4>🚀 <strong>Enhanced with Windows PowerShell Support!</strong></h4>
-    <p><em>This fork includes native Windows PowerShell scripts for seamless cross-platform development</em></p>
+    <h4>🚀 <strong>Enhanced with Security-First Development & Windows PowerShell Support!</strong></h4>
+    <p><em>This fork includes AI-driven security enhancements, vulnerability auditing, and native Windows PowerShell scripts for seamless cross-platform development</em></p>
 </div>
 
 ---
@@ -21,6 +21,7 @@
 
 - [🤔 What is Spec-Driven Development?](#-what-is-spec-driven-development)
 - [⚡ Get started](#-get-started)
+- [🔒 Security-First Development](#-security-first-development)
 - [📚 Core philosophy](#-core-philosophy)
 - [🌟 Development phases](#-development-phases)
 - [🎯 Experimental goals](#-experimental-goals)
@@ -77,6 +78,35 @@ Spec-Driven Development is a structured process that emphasizes:
 - **Rich specification creation** using guardrails and organizational principles
 - **Multi-step refinement** rather than one-shot code generation from prompts
 - **Heavy reliance** on advanced AI model capabilities for specification interpretation
+
+## 🔒 Security-First Development
+
+This fork introduces **AI-driven security enhancements** that integrate security considerations throughout the entire development lifecycle:
+
+### 🛡️ Security Features
+
+- **AI Security Analysis**: Automatic threat modeling and security level determination
+- **Security-First Templates**: Enhanced spec, plan, and task templates with built-in security controls
+- **Vulnerability Auditing**: Integrated security scanning with Semgrep, Bandit, Trivy, and more
+- **Compliance Mapping**: Support for OWASP ASVS, NIST SSDF, and other security frameworks
+- **Security Testing**: Automated security test generation and execution
+- **Risk Assessment**: CVSS v4.0 scoring and risk prioritization
+
+### 🔧 Security Tools Integration
+
+- **SAST/SCA**: Semgrep, CodeQL, Bandit, pip-audit
+- **Secrets Detection**: Gitleaks, detect-secrets
+- **Container Security**: Trivy for container and filesystem scanning
+- **SBOM Generation**: CycloneDX SBOM with Syft
+- **Pre-commit Hooks**: Automated security checks before commits
+
+### 📋 Security Workflow
+
+1. **Specification Phase**: AI analyzes security requirements and threat vectors
+2. **Planning Phase**: Security architecture and controls are defined
+3. **Task Generation**: Security-first task ordering with security controls prioritized
+4. **Implementation**: Security testing and validation throughout development
+5. **Deployment**: Continuous security monitoring and compliance verification
 
 ## 🌟 Development phases
 

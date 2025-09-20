@@ -38,3 +38,4 @@ env/
 .env
 .env.local
 *.lock
+spec-kit-vuln-module/
