@@ -1,27 +1,71 @@
-# minimal project metadata used by the generator
-name: Example Project
+# Multi-language project metadata for comprehensive security auditing
+name: Multi-Language Security Project
 owner: Your Org
 repo_url: https://github.com/your/repo
 description: >
-  Short description of the system. Components, main tech stack, data sensitivity, users.
+  Multi-language project with comprehensive security scanning support.
+  Supports Python, JavaScript, TypeScript, Go, Rust, Java, C#, C/C++, PHP, Ruby, Shell, PowerShell, YAML, and Dockerfile.
 llm_used: true  # if the project uses LLMs/AI agents/tools
 data_categories:
   - Public
   - Internal
   - Confidential
   - PII
+  - PHI  # Protected Health Information
+  - Financial
 environments:
   - dev
   - staging
   - prod
+  - test
 languages:
   - python
-  - bash
-  - markdown
+  - javascript
+  - typescript
+  - go
+  - rust
+  - java
+  - csharp
+  - cpp
+  - c
+  - php
+  - ruby
+  - swift
+  - kotlin
+  - scala
+  - dart
+  - shell
+  - powershell
+  - yaml
+  - dockerfile
 dependencies_manifest:
   - requirements.txt
   - pyproject.toml
   - package.json
+  - yarn.lock
+  - package-lock.json
+  - go.mod
+  - go.sum
+  - Cargo.toml
+  - Cargo.lock
+  - pom.xml
+  - build.gradle
+  - build.gradle.kts
+  - gradle.properties
+  - *.csproj
+  - *.sln
+  - composer.json
+  - composer.lock
+  - Gemfile
+  - Gemfile.lock
+  - Podfile
+  - Podfile.lock
+  - pubspec.yaml
+  - pubspec.lock
+  - CMakeLists.txt
+  - Makefile
+  - Dockerfile
+  - docker-compose.yml
 threat_model_components:
   - API Gateway
   - Backend Service
@@ -29,3 +73,33 @@ threat_model_components:
   - Object Storage
   - CI/CD
   - LLM/Agent Runtime
+  - Frontend Application
+  - Mobile Application
+  - Container Runtime
+  - Kubernetes Cluster
+  - Message Queue
+  - Cache Layer
+  - CDN
+  - Load Balancer
+security_frameworks:
+  - OWASP_ASVS
+  - OWASP_Top_10
+  - NIST_SSDF
+  - ISO_27001
+  - SOC_2
+  - GDPR
+  - HIPAA
+  - PCI_DSS
+  - CIS_Controls
+  - NIST_Cybersecurity_Framework
+compliance_requirements:
+  - data_protection
+  - privacy_by_design
+  - security_by_design
+  - incident_response
+  - vulnerability_management
+  - access_control
+  - encryption_at_rest
+  - encryption_in_transit
+  - audit_logging
+  - backup_recovery
