@@ -32,6 +32,18 @@ if [ -f "$TEMPLATE" ]; then
     cp "$TEMPLATE" "$IMPL_PLAN"
 fi
 
+# Copy research template if it exists
+RESEARCH_TEMPLATE="$REPO_ROOT/templates/research-template.md"
+if [ -f "$RESEARCH_TEMPLATE" ]; then
+    cp "$RESEARCH_TEMPLATE" "$RESEARCH"
+fi
+
+# Copy security research template if it exists
+SECURITY_RESEARCH_TEMPLATE="$REPO_ROOT/templates/security-research-template.md"
+if [ -f "$SECURITY_RESEARCH_TEMPLATE" ]; then
+    cp "$SECURITY_RESEARCH_TEMPLATE" "$SECURITY_RESEARCH"
+fi
+
 if $JSON_MODE; then
     printf '{"FEATURE_SPEC":"%s","IMPL_PLAN":"%s","SPECS_DIR":"%s","BRANCH":"%s"}\n' \
         "$FEATURE_SPEC" "$IMPL_PLAN" "$FEATURE_DIR" "$CURRENT_BRANCH"

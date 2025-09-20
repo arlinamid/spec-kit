@@ -41,6 +41,18 @@ if (Test-Path $template -PathType Leaf) {
     Copy-Item $template $paths.IMPL_PLAN
 }
 
+# Copy research template if it exists
+$researchTemplate = Join-Path (Join-Path $paths.REPO_ROOT "templates") "research-template.md"
+if (Test-Path $researchTemplate -PathType Leaf) {
+    Copy-Item $researchTemplate $paths.RESEARCH
+}
+
+# Copy security research template if it exists
+$securityResearchTemplate = Join-Path (Join-Path $paths.REPO_ROOT "templates") "security-research-template.md"
+if (Test-Path $securityResearchTemplate -PathType Leaf) {
+    Copy-Item $securityResearchTemplate $paths.SECURITY_RESEARCH
+}
+
 if ($Json) {
     $result = @{
         FEATURE_SPEC = $paths.FEATURE_SPEC
