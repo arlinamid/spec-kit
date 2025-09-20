@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.4] - 2025-09-20
+
+### Fixed
+- **Plan Template Documentation**: Fixed missing security research files in plan template documentation structure
+- **Template Consistency**: Updated plan template to accurately reflect all files created by setup scripts
+- **Phase Documentation**: Added security-research.md and security-architecture.md to Phase 0 and Phase 1 outputs
+- **Prerequisites**: Updated Phase 1 prerequisites to require both research.md and security-research.md
+
+### Enhanced
+- **Documentation Structure**: Plan template now shows complete file structure including all security research files
+- **Workflow Clarity**: Phase descriptions now accurately reflect the security-enhanced workflow
+- **Template Propagation**: All AI agent packages updated with corrected plan template
+
 ## [0.1.3] - 2025-09-20
 
 ### Fixed
