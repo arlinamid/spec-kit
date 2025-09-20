@@ -2,74 +2,56 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.1.0] - 2025-01-20
+## [0.1.3] - 2025-09-20
 
-### 🚀 Major Security Enhancements
+### Fixed
+- **Security Research File Generation**: Fixed missing `research.md` and `security-research.md` file creation in setup scripts
+- **Template Integration**: Added missing research templates that were referenced in security-enhanced workflow
+- **Script Updates**: Updated `setup-plan.sh` and `setup-plan.ps1` to automatically create research files from templates
 
-#### ✨ New Features
-- **AI-Driven Security Analysis**: Automatic threat modeling and security level determination
-- **Security-First Templates**: Enhanced spec, plan, and task templates with built-in security controls
-- **Vulnerability Auditing**: Integrated security scanning with industry-standard tools
-- **Compliance Mapping**: Support for OWASP ASVS, NIST SSDF, and security frameworks
-- **Security Testing**: Automated security test generation and execution
-- **Risk Assessment**: CVSS v4.0 scoring and risk prioritization
+### Added
+- **Research Template**: New `research-template.md` for general technical research documentation
+- **Security Research Template**: New `security-research-template.md` for security-specific research and threat modeling
+- **Template Propagation**: All AI agent packages (Claude, Copilot, Gemini) now include the new research templates
 
-#### 🔧 Security Tools Integration
-- **SAST/SCA**: Semgrep, CodeQL, Bandit, pip-audit
-- **Secrets Detection**: Gitleaks, detect-secrets
-- **Container Security**: Trivy for container and filesystem scanning
-- **SBOM Generation**: CycloneDX SBOM with Syft
-- **Pre-commit Hooks**: Automated security checks before commits
+### Changed
+- **Setup Scripts**: Enhanced to create both `research.md` and `security-research.md` during plan setup
+- **Package Structure**: All release packages updated with new templates and scripts
 
-#### 📋 Enhanced Templates
-- **Spec Template**: AI security analysis, threat modeling, security requirements, data classification
-- **Plan Template**: Security architecture, security dependencies, security goals and constraints
-- **Tasks Template**: Security-first task ordering, security setup, security testing, security integration
+### Technical Details
+- Scripts now properly generate research files during Phase 0 of the security-enhanced workflow
+- Templates provide comprehensive structures for technical and security research
+- All AI agent packages synchronized with latest templates and scripts
 
-#### 🛠️ Script Enhancements
-- **Common Scripts**: Added security file paths (`SECURITY_RESEARCH`, `SECURITY_ARCHITECTURE`)
-- **Prerequisites Scripts**: Now checks for security files (`security-research.md`, `security-architecture.md`)
-- **Agent Context Scripts**: Extract security context from plans for AI assistants
-- **Cross-Platform Support**: Enhanced PowerShell and Bash scripts
+## [0.1.2] - 2025-09-20
 
-#### 📦 Package Updates
-- **Gemini Package**: Complete security-enhanced framework for Gemini CLI
-- **Claude Package**: Complete security-enhanced framework for Claude Code
-- **Copilot Package**: Complete security-enhanced framework for GitHub Copilot
-- **Package READMEs**: Comprehensive documentation for each package
+### Added
+- **Multi-Language Security Support**: Comprehensive security scanning for 15+ programming languages
+- **Automatic Language Detection**: Intelligent detection and tool selection based on project languages
+- **Enhanced Security Tools**: 50+ security tools across all supported languages
+- **AI-Driven Security Templates**: Security-enhanced spec, plan, and task templates
+- **Comprehensive Documentation**: Language-specific security guides and best practices
 
-#### 🔄 Workflow Improvements
-- **Security-First Development**: Security controls prioritized throughout development lifecycle
-- **AI Security Integration**: Automatic security analysis and recommendations
-- **Compliance Support**: Built-in support for security frameworks and standards
-- **Risk Management**: Proactive security controls and monitoring
+### Enhanced
+- **Security Workflow**: Security-first approach with integrated threat modeling
+- **CI/CD Integration**: Advanced GitHub Actions workflows with language detection
+- **Compliance Mapping**: OWASP, NIST, ISO, SOC 2, GDPR, HIPAA, PCI DSS support
+- **Risk Assessment**: CVSS v4.0 scoring and comprehensive risk management
 
-### 🐛 Bug Fixes
-- Fixed template redundancy issues
-- Improved script error handling
-- Enhanced cross-platform compatibility
+## [0.1.1] - 2025-09-20
 
-### 📚 Documentation
-- Updated main README with security features
-- Added comprehensive package documentation
-- Enhanced security workflow documentation
-- Added security tools integration guide
+### Added
+- **Vulnerability Audit Module**: Drop-in security auditing solution
+- **Security Templates**: OWASP ASVS-mapped security checklists
+- **Multi-Language Support**: Security scanning for Python, JavaScript, Go, Rust, Java, C#, C/C++, PHP, Ruby
+- **CI/CD Integration**: GitHub Actions workflows for automated security scanning
+- **Pre-commit Hooks**: Client-side security checks
 
-### 🔧 Technical Improvements
-- Cleaned up redundant templates
-- Synchronized package-specific scripts
-- Enhanced error handling and validation
-- Improved cross-platform support
+## [0.1.0] - 2025-09-20
 
----
-
-## [0.0.2] - Previous Release
-
-### Features
-- Initial Windows PowerShell support
-- Cross-platform script compatibility
-- Basic Spec-Driven Development framework
-
----
-
-**Full Changelog**: https://github.com/arlinamid/spec-kit/compare/v0.0.2...v0.1.0
+### Added
+- **Spec-Driven Development Framework**: Core SDD methodology implementation
+- **Multi-Agent Support**: Templates for Claude, GitHub Copilot, and Gemini AI assistants
+- **Cross-Platform Scripts**: PowerShell and Bash scripts for Windows and Unix systems
+- **Constitution System**: Development principles enforcement
+- **Template System**: Comprehensive templates for specs, plans, and tasks
