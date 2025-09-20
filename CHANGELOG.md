@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.5] - 2025-09-20
+
+### Fixed
+- **Tasks Template Rigidity**: Fixed rigid phase structure (3.1-3.8) that didn't adapt to project needs
+- **Python-Centric Assumptions**: Removed Python-specific file extensions and patterns
+- **One-Size-Fits-All**: Replaced with adaptive task generation based on project type and tech stack
+
+### Enhanced
+- **Multi-Language Support**: Added support for Python, JavaScript/TypeScript, Rust, Go, Java, C#, C/C++, PHP, Ruby, Swift, Kotlin, Scala, Dart
+- **Project-Type Adaptation**: Different patterns for web apps, mobile apps, CLI tools, libraries
+- **Dynamic Task Generation**: Tasks now generated based on actual design documents (contracts, data model, security architecture)
+- **Language-Specific Dependencies**: Added language-specific patterns and dependencies
+- **Flexible Structure**: No more rigid phases - only generates tasks that are actually needed
+
+### Technical Improvements
+- **Adaptive Task Rules**: Tasks adjust to project type and tech stack
+- **Language-Specific Patterns**: File extensions, patterns, and dependencies adapt to language
+- **Project-Specific Structure**: Web apps, mobile apps, CLI tools, libraries have different patterns
+- **Security-First Maintained**: Security-first approach maintained but with language-specific tools
+- **TDD Support**: Test-driven development with language-specific patterns
+
 ## [0.1.4] - 2025-09-20
 
 ### Fixed
