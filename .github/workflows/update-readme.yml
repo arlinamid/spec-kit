@@ -1,0 +1,172 @@
+name: Update README with Release Info
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to update (e.g., v0.1.6)'
+        required: true
+        type: string
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      pull-requests: write
+      
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Get release information
+      id: release_info
+      run: |
+        if [ "${{ github.event_name }}" = "release" ]; then
+          VERSION="${{ github.event.release.tag_name }}"
+          RELEASE_URL="${{ github.event.release.html_url }}"
+          RELEASE_TITLE="${{ github.event.release.name }}"
+          RELEASE_BODY="${{ github.event.release.body }}"
+        else
+          # Manual trigger with version input
+          VERSION="${{ github.event.inputs.version }}"
+          RELEASE_URL="https://github.com/${{ github.repository }}/releases/tag/$VERSION"
+          RELEASE_TITLE="Release $VERSION"
+          RELEASE_BODY="Manual release update"
+        fi
+        
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "release_url=$RELEASE_URL" >> $GITHUB_OUTPUT
+        echo "release_title=$RELEASE_TITLE" >> $GITHUB_OUTPUT
+        echo "release_body=$RELEASE_BODY" >> $GITHUB_OUTPUT
+        
+        # Extract version number without 'v' prefix
+        VERSION_NO_V=${VERSION#v}
+        echo "version_no_v=$VERSION_NO_V" >> $GITHUB_OUTPUT
+        
+        echo "Processing release: $VERSION"
+        echo "Release URL: $RELEASE_URL"
+        
+    - name: Get release assets
+      id: assets
+      run: |
+        VERSION="${{ steps.release_info.outputs.version }}"
+        
+        # Get release assets using GitHub API
+        ASSETS=$(gh api repos/${{ github.repository }}/releases/tags/$VERSION --jq '.assets[] | {name: .name, download_url: .browser_download_url, size: .size}')
+        
+        # Extract specific package URLs
+        COMPLETE_URL=$(echo "$ASSETS" | jq -r 'select(.name | contains("complete")) | .download_url' | head -1)
+        CLAUDE_URL=$(echo "$ASSETS" | jq -r 'select(.name | contains("claude")) | .download_url' | head -1)
+        COPILOT_URL=$(echo "$ASSETS" | jq -r 'select(.name | contains("copilot")) | .download_url' | head -1)
+        GEMINI_URL=$(echo "$ASSETS" | jq -r 'select(.name | contains("gemini")) | .download_url' | head -1)
+        VULN_URL=$(echo "$ASSETS" | jq -r 'select(.name | contains("vuln-module")) | .download_url' | head -1)
+        
+        echo "complete_url=$COMPLETE_URL" >> $GITHUB_OUTPUT
+        echo "claude_url=$CLAUDE_URL" >> $GITHUB_OUTPUT
+        echo "copilot_url=$COPILOT_URL" >> $GITHUB_OUTPUT
+        echo "gemini_url=$GEMINI_URL" >> $GITHUB_OUTPUT
+        echo "vuln_url=$VULN_URL" >> $GITHUB_OUTPUT
+        
+        echo "Found assets:"
+        echo "Complete: $COMPLETE_URL"
+        echo "Claude: $CLAUDE_URL"
+        echo "Copilot: $COPILOT_URL"
+        echo "Gemini: $GEMINI_URL"
+        echo "Vuln: $VULN_URL"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Update README with release information
+      run: |
+        VERSION="${{ steps.release_info.outputs.version }}"
+        VERSION_NO_V="${{ steps.release_info.outputs.version_no_v }}"
+        RELEASE_URL="${{ steps.release_info.outputs.release_url }}"
+        
+        # Create temporary file for updated README
+        cp README.md README.md.backup
+        
+        # Create the release information section
+        cat > release_section.md << 'EOF'
+        
+        ## 📦 Releases & Packages
+        
+        ### 🚀 Latest Release: VERSION_PLACEHOLDER
+        
+        **Download the latest release packages:**
+        
+        - **[Complete Package](COMPLETE_URL_PLACEHOLDER)** - Full spec-kit with all templates
+        - **[Claude Template](CLAUDE_URL_PLACEHOLDER)** - Optimized for Claude Code
+        - **[Copilot Template](COPILOT_URL_PLACEHOLDER)** - Optimized for GitHub Copilot  
+        - **[Gemini Template](GEMINI_URL_PLACEHOLDER)** - Optimized for Google Gemini
+        - **[Vulnerability Module](VULN_URL_PLACEHOLDER)** - Security-first development tools
+        
+        ### 📋 What's New in VERSION_PLACEHOLDER
+        - ✅ **Fixed f-string syntax error** that prevented CLI from running
+        - ✅ **Resolved import dependencies** (typer, readchar)
+        - ✅ **Enhanced Windows PowerShell support** with native scripts
+        - ✅ **Cross-platform compatibility** improvements
+        
+        ### 🔄 Installation Options
+        
+        **Option 1: Direct from GitHub (Recommended)**
+        ```bash
+        uvx --from git+https://github.com/arlinamid/spec-kit.git specify init <PROJECT_NAME>
+        ```
+        
+        **Option 2: Download Release Package**
+        1. Download the appropriate template package from [releases](RELEASE_URL_PLACEHOLDER)
+        2. Extract to your project directory
+        3. Follow the setup instructions in the package
+        EOF
+        
+        # Replace placeholders
+        sed -i "s/VERSION_PLACEHOLDER/$VERSION_NO_V/g" release_section.md
+        sed -i "s|COMPLETE_URL_PLACEHOLDER|${{ steps.assets.outputs.complete_url }}|g" release_section.md
+        sed -i "s|CLAUDE_URL_PLACEHOLDER|${{ steps.assets.outputs.claude_url }}|g" release_section.md
+        sed -i "s|COPILOT_URL_PLACEHOLDER|${{ steps.assets.outputs.copilot_url }}|g" release_section.md
+        sed -i "s|GEMINI_URL_PLACEHOLDER|${{ steps.assets.outputs.gemini_url }}|g" release_section.md
+        sed -i "s|VULN_URL_PLACEHOLDER|${{ steps.assets.outputs.vuln_url }}|g" release_section.md
+        sed -i "s|RELEASE_URL_PLACEHOLDER|$RELEASE_URL|g" release_section.md
+        
+        # Find the insertion point (after the "Get started" section)
+        INSERT_LINE=$(grep -n "## 📚 Core philosophy" README.md | cut -d: -f1)
+        
+        if [ -n "$INSERT_LINE" ]; then
+          # Insert the release section before "Core philosophy"
+          head -n $((INSERT_LINE - 1)) README.md > README_new.md
+          cat release_section.md >> README_new.md
+          tail -n +$INSERT_LINE README.md >> README_new.md
+          mv README_new.md README.md
+          echo "✅ Updated README with release information"
+        else
+          echo "❌ Could not find insertion point in README"
+          exit 1
+        fi
+        
+        # Show the changes
+        echo "📝 Changes made to README:"
+        diff README.md.backup README.md || true
+        
+    - name: Commit and push changes
+      run: |
+        # Check if there are changes
+        if git diff --quiet README.md; then
+          echo "No changes to README.md"
+        else
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          git add README.md
+          git commit -m "Update README with release information for ${{ steps.release_info.outputs.version }}"
+          git push
+          echo "✅ Updated README.md with release information"
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
