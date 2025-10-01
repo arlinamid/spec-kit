@@ -73,7 +73,9 @@ For detailed step-by-step instructions, see our [comprehensive guide](./spec-dri
 
 ## 📦 Releases & Packages
 
-### 🚀 Latest Release: v0.1.6
+## 📦 Releases & Packages
+
+### 🚀 Latest Release: 0.1.6
 
 **Download the latest release packages:**
 
@@ -83,7 +85,7 @@ For detailed step-by-step instructions, see our [comprehensive guide](./spec-dri
 - **[Gemini Template](https://github.com/arlinamid/spec-kit/releases/download/v0.1.6/spec-kit-template-gemini-v0.1.6.zip)** - Optimized for Google Gemini
 - **[Vulnerability Module](https://github.com/arlinamid/spec-kit/releases/download/v0.1.6/spec-kit-vuln-module-v0.1.6.zip)** - Security-first development tools
 
-### 📋 What's New in v0.1.6
+### 📋 What's New in 0.1.6
 - ✅ **Fixed f-string syntax error** that prevented CLI from running
 - ✅ **Resolved import dependencies** (typer, readchar)
 - ✅ **Enhanced Windows PowerShell support** with native scripts
@@ -97,10 +99,9 @@ uvx --from git+https://github.com/arlinamid/spec-kit.git specify init <PROJECT_N
 ```
 
 **Option 2: Download Release Package**
-1. Download the appropriate template package from [releases](https://github.com/arlinamid/spec-kit/releases)
+1. Download the appropriate template package from [releases](https://github.com/arlinamid/spec-kit/releases/tag/v0.1.6)
 2. Extract to your project directory
 3. Follow the setup instructions in the package
-
 ## 📚 Core philosophy
 
 Spec-Driven Development is a structured process that emphasizes:
