@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.6] - 2025-01-27
+
+### Fixed
+- **F-string Syntax Error**: Fixed Python f-string syntax error in script execution examples that prevented CLI from running
+- **Import Dependencies**: Resolved missing import errors for typer and readchar dependencies
+
 ## [0.1.5] - 2025-09-20
 
 ### Fixed

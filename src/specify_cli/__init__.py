@@ -889,7 +889,8 @@ def check():
     
     # Show script examples
     console.print(f"\n[cyan]Script execution examples:[/cyan]")
-    console.print(f"  Create feature: [dim]{get_script_command('create-new-feature', '--json \"feature description\"')}[/dim]")
+    json_arg = '--json "feature description"'
+    console.print(f"  Create feature: [dim]{get_script_command('create-new-feature', json_arg)}[/dim]")
     console.print(f"  Setup plan: [dim]{get_script_command('setup-plan', '--json')}[/dim]")
     console.print(f"  Check prerequisites: [dim]{get_script_command('check-task-prerequisites', '--json')}[/dim]")
 
