@@ -104,6 +104,36 @@ uvx --from git+https://github.com/arlinamid/spec-kit.git specify init <PROJECT_N
 1. Download the appropriate template package from [releases](https://github.com/arlinamid/spec-kit/releases/tag/v0.1.6)
 2. Extract to your project directory
 3. Follow the setup instructions in the package
+
+## 📦 Releases & Packages
+
+### 🚀 Latest Release: 0.1.6
+
+**Download the latest release packages:**
+
+- **[Complete Package](https://github.com/arlinamid/spec-kit/releases/download/v0.1.6/spec-kit-complete-v0.1.6.zip)** - Full spec-kit with all templates
+- **[Claude Template](https://github.com/arlinamid/spec-kit/releases/download/v0.1.6/spec-kit-template-claude-v0.1.6.zip)** - Optimized for Claude Code
+- **[Copilot Template](https://github.com/arlinamid/spec-kit/releases/download/v0.1.6/spec-kit-template-copilot-v0.1.6.zip)** - Optimized for GitHub Copilot  
+- **[Gemini Template](https://github.com/arlinamid/spec-kit/releases/download/v0.1.6/spec-kit-template-gemini-v0.1.6.zip)** - Optimized for Google Gemini
+- **[Vulnerability Module](https://github.com/arlinamid/spec-kit/releases/download/v0.1.6/spec-kit-vuln-module-v0.1.6.zip)** - Security-first development tools
+
+### 📋 What's New in 0.1.6
+- ✅ **Fixed f-string syntax error** that prevented CLI from running
+- ✅ **Resolved import dependencies** (typer, readchar)
+- ✅ **Enhanced Windows PowerShell support** with native scripts
+- ✅ **Cross-platform compatibility** improvements
+
+### 🔄 Installation Options
+
+**Option 1: Direct from GitHub (Recommended)**
+```bash
+uvx --from git+https://github.com/arlinamid/spec-kit.git specify init <PROJECT_NAME>
+```
+
+**Option 2: Download Release Package**
+1. Download the appropriate template package from [releases](https://github.com/arlinamid/spec-kit/releases/tag/v0.1.6)
+2. Extract to your project directory
+3. Follow the setup instructions in the package
 ## 📚 Core philosophy
 
 Spec-Driven Development is a structured process that emphasizes:
