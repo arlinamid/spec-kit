@@ -9,6 +9,7 @@
 </p>
 
 [![Release](https://github.com/arlinamid/spec-kit/actions/workflows/release.yml/badge.svg)](https://github.com/arlinamid/spec-kit/actions/workflows/release.yml)
+[![Latest Release](https://img.shields.io/github/v/release/arlinamid/spec-kit?label=Latest%20Release&style=flat-square)](https://github.com/arlinamid/spec-kit/releases/latest)
 
 <div align="center">
     <h4>🚀 <strong>Enhanced with Security-First Development & Windows PowerShell Support!</strong></h4>
