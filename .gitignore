@@ -38,3 +38,7 @@ env/
 .env
 .env.local
 *.lock
+
+# Package template directories (removed from repository)
+sdd-*-package/
+sdd-package-base/
