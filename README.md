@@ -73,6 +73,8 @@ For detailed step-by-step instructions, see our [comprehensive guide](./spec-dri
 
 ## 📦 Releases & Packages
 
+## 📦 Releases & Packages
+
 ### 🚀 Latest Release: 0.1.6
 
 **Download the latest release packages:**
@@ -100,7 +102,6 @@ uvx --from git+https://github.com/arlinamid/spec-kit.git specify init <PROJECT_N
 1. Download the appropriate template package from [releases](https://github.com/arlinamid/spec-kit/releases/tag/v0.1.6)
 2. Extract to your project directory
 3. Follow the setup instructions in the package
-
 ## 📚 Core philosophy
 
 Spec-Driven Development is a structured process that emphasizes:
