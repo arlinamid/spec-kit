@@ -12,7 +12,7 @@
 [![Manual Release](https://github.com/arlinamid/spec-kit/actions/workflows/manual-release.yml/badge.svg)](https://github.com/arlinamid/spec-kit/actions/workflows/manual-release.yml)
 [![Update README](https://github.com/arlinamid/spec-kit/actions/workflows/update-readme.yml/badge.svg)](https://github.com/arlinamid/spec-kit/actions/workflows/update-readme.yml)
 [![Update README Manual](https://github.com/arlinamid/spec-kit/actions/workflows/update-readme-manual.yml/badge.svg)](https://github.com/arlinamid/spec-kit/actions/workflows/update-readme-manual.yml)
-[![Deploy Docs](https://github.com/arlinamid/spec-kit/actions/workflows/docs.yml/badge.svg)](https://github.com/arlinamid/spec-kit/actions/workflows/docs.yml)
+[![Deploy Docs](https://github.com/arlinamid/spec-kit/actions/workflows/docs.yml/badge.svg)](https://github.com/arlinamid/spec-kit/actions/workflows/docs.yml) ⚠️ *Requires GitHub Pages setup*
 [![Latest Release](https://img.shields.io/github/v/release/arlinamid/spec-kit?label=Latest%20Release&style=flat-square)](https://github.com/arlinamid/spec-kit/releases/latest)
 
 <div align="center">
