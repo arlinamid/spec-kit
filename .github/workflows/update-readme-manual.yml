@@ -33,12 +33,14 @@ jobs:
         VERSION=$(echo "$LATEST_RELEASE" | jq -r '.tag_name')
         RELEASE_URL=$(echo "$LATEST_RELEASE" | jq -r '.html_url')
         RELEASE_TITLE=$(echo "$LATEST_RELEASE" | jq -r '.name')
-        RELEASE_BODY=$(echo "$LATEST_RELEASE" | jq -r '.body')
+        RELEASE_BODY=$(echo "$LATEST_RELEASE" | jq -r '.body' | sed 's/"/\\"/g' | tr -d '\n')
         
         echo "version=$VERSION" >> $GITHUB_OUTPUT
         echo "release_url=$RELEASE_URL" >> $GITHUB_OUTPUT
         echo "release_title=$RELEASE_TITLE" >> $GITHUB_OUTPUT
-        echo "release_body=$RELEASE_BODY" >> $GITHUB_OUTPUT
+        echo "release_body<<EOF" >> $GITHUB_OUTPUT
+        echo "$RELEASE_BODY" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
         
         # Extract version number without 'v' prefix
         VERSION_NO_V=${VERSION#v}
