@@ -187,11 +187,11 @@ gemini /tasks "Generate implementation tasks"
 - **Enhanced Error Messages**: Clear feedback for troubleshooting
 - **Common Functions**: Shared utilities for consistent behavior across scripts
 
-## 🔄 Differences from Original Repository
+## 🔄 Fork Information
 
-This fork (`arlinamid/spec-kit`) includes several enhancements over the original `github/spec-kit`:
+This is a **fork** of the original [GitHub Spec Kit repository](https://github.com/github/spec-kit) with additional enhancements by [@arlinamid](https://github.com/arlinamid).
 
-### 🆕 New Features
+### 🆕 Enhanced Features
 - **Windows PowerShell Support**: Native PowerShell scripts for Windows users
 - **Cross-Platform Script Detection**: Automatic selection of appropriate scripts based on OS
 - **Enhanced Error Handling**: Better error messages and validation
@@ -207,6 +207,9 @@ This fork (`arlinamid/spec-kit`) includes several enhancements over the original
 - **Template Packages**: Includes PowerShell scripts in all release packages
 - **Automated Releases**: GitHub Actions workflow for consistent releases
 - **Version Control**: Proper versioning with semantic versioning
+
+### 🙏 Original Work
+This fork builds upon the excellent work of the original [GitHub Spec Kit](https://github.com/github/spec-kit) project by [@localden](https://github.com/localden) and [@jflam](https://github.com/jflam). All core Spec-Driven Development concepts and methodologies remain unchanged.
 
 ## 📖 Learn more
 
@@ -464,11 +467,17 @@ rm gcm-linux_amd64.2.6.1.deb
 
 ## 💬 Support
 
-For support, please open a [GitHub issue](https://github.com/github/spec-kit/issues/new). We welcome bug reports, feature requests, and questions about using Spec-Driven Development.
+For support with this enhanced fork, please open a [GitHub issue](https://github.com/arlinamid/spec-kit/issues/new). 
+
+For issues related to the core Spec-Driven Development methodology, please refer to the original [GitHub Spec Kit repository](https://github.com/github/spec-kit/issues/new).
 
 ## 🙏 Acknowledgements
 
-This project is heavily influenced by and based on the work and research of [John Lam](https://github.com/jflam).
+This fork is built upon the excellent work and research of the original [GitHub Spec Kit](https://github.com/github/spec-kit) project by:
+- [Den Delimarsky](https://github.com/localden) ([@localden](https://github.com/localden))
+- [John Lam](https://github.com/jflam) ([@jflam](https://github.com/jflam))
+
+All core Spec-Driven Development concepts and methodologies originate from their groundbreaking work.
 
 ## 📄 License
 
